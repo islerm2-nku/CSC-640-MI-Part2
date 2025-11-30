@@ -13,8 +13,8 @@ This page contains presentation materials for the iRacing Telemetry API project.
 ### API Overview
 A comprehensive overview of the API endpoints, features, and usage examples.
 
-- [View API Overview Slides](/presentations/api-overview.md)
-- [Download API Overview](/presentations/api-overview.md)
+- [View/Download API Overview Slides](https://raw.githubusercontent.com/islerm2-nku/CSC-640-MI-Part2/main/docs/static/presentations/api-overview.md)
+- [View on GitHub](https://github.com/islerm2-nku/CSC-640-MI-Part2/blob/main/docs/static/presentations/api-overview.md)
 
 This presentation covers:
 - Project architecture and tech stack
@@ -29,8 +29,8 @@ This presentation covers:
 ### Deployment Guide
 Step-by-step guide for deploying the application using Docker.
 
-- [View Deployment Guide Slides](/presentations/deployment-guide.md)
-- [Download Deployment Guide](/presentations/deployment-guide.md)
+- [View/Download Deployment Guide Slides](https://raw.githubusercontent.com/islerm2-nku/CSC-640-MI-Part2/main/docs/static/presentations/deployment-guide.md)
+- [View on GitHub](https://github.com/islerm2-nku/CSC-640-MI-Part2/blob/main/docs/static/presentations/deployment-guide.md)
 
 This guide covers:
 - Prerequisites and setup
