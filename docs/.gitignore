@@ -1,0 +1,10 @@
+# Ignore Hugo build output
+public/
+resources/
+
+# Ignore Hugo cache
+.hugo_build.lock
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
