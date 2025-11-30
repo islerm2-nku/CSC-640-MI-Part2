@@ -2,6 +2,8 @@
 
 FastAPI-based telemetry API with OAuth authentication.
 
+> **Note:** This project was created and updated with the help of GitHub Copilot.
+
 ## Features
 
 - FastAPI REST API

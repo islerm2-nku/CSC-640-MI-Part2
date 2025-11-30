@@ -8,6 +8,8 @@ draft: false
 
 Welcome to the documentation for the iRacing Telemetry API (CSC-640-MI-Part2).
 
+> **Note:** This project was created and updated with the help of GitHub Copilot.
+
 ## Overview
 
 A FastAPI-based telemetry API with GitHub OAuth authentication for uploading, storing, and analyzing iRacing telemetry data.
