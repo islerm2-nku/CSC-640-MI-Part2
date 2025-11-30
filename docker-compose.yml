@@ -1,0 +1,72 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+      - "5678:5678" # Python debugger port
+    volumes:
+      - ./app:/app:rw
+    environment:
+      DB_DRIVER: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: app
+      DB_USER: appuser
+      DB_PASSWORD: apppass
+      # GitHub OAuth configuration
+      OAUTH_CLIENT_ID: ${OAUTH_CLIENT_ID:-}
+      OAUTH_CLIENT_SECRET: ${OAUTH_CLIENT_SECRET:-}
+      OAUTH_REDIRECT_URI: ${OAUTH_REDIRECT_URI:-http://localhost/auth/callback}
+      OAUTH_AUTHORIZATION_URL: ${OAUTH_AUTHORIZATION_URL:-https://github.com/login/oauth/authorize}
+      OAUTH_TOKEN_URL: ${OAUTH_TOKEN_URL:-https://github.com/login/oauth/access_token}
+      OAUTH_USERINFO_URL: ${OAUTH_USERINFO_URL:-https://api.github.com/user}
+      # JWT Secret for token generation
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-your-secret-key-change-in-production}
+      JWT_ALGORITHM: HS256
+      JWT_ACCESS_TOKEN_EXPIRE_MINUTES: 30
+    depends_on:
+      db:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: app
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  migrate:
+    build: .
+    volumes:
+      - ./app:/app:rw
+      - ./db:/app/db:rw
+    environment:
+      DB_DRIVER: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: app
+      DB_USER: appuser
+      DB_PASSWORD: apppass
+    depends_on:
+      db:
+        condition: service_healthy
+    entrypoint: ["python", "/app/db/create_db.py"]
+    restart: "no"
+
+volumes:
+  dbdata:
