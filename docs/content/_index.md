@@ -26,7 +26,7 @@ A FastAPI-based telemetry API with GitHub OAuth authentication for uploading, st
 
 - [GitHub Repository](https://github.com/islerm2-nku/CSC-640-MI-Part2)
 - [API Documentation (Local)](http://localhost/docs) - Available when running locally
-- [Presentations](/presentations/) - Slide decks and guides
+- [Presentations]({{< relref "/presentations" >}}) - API Overview and Deployment Guide slides
 
 ## Tech Stack
 
@@ -54,7 +54,7 @@ Access the API at http://localhost and interactive docs at http://localhost/docs
 
 ## Documentation
 
-- [Presentations](/presentations/) - API Overview and Deployment Guide slides
+- [Presentations]({{< relref "/presentations" >}}) - API Overview and Deployment Guide slides
 - [README](https://github.com/islerm2-nku/CSC-640-MI-Part2/blob/main/README.md) - Project README
 
 ## Project Structure
